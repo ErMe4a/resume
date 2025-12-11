@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Бабаев Эрмек - Резюме</title>
+    
+    <!-- Подключение Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Подключение иконок Lucide -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    
+    <!-- Подключение шрифтов -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f8fafc;
+        }
+        /* Стили для печати */
+        @media print {
+            body { background-color: white; }
+            .print-p-0 { padding: 0 !important; }
+            .print-shadow-none { box-shadow: none !important; }
+            .no-print { display: none !important; }
+            .page-break { page-break-before: always; }
+        }
+    </style>
+<script type="importmap">
+{
+  "imports": {
+    "react": "https://esm.sh/react@^19.2.1",
+    "lucide-react": "https://esm.sh/lucide-react@^0.560.0",
+    "react/": "https://esm.sh/react@^19.2.1/"
+  }
+}
+</script>
+</head>
+<body>
+    <div class="min-h-screen py-8 px-4 sm:px-6 lg:px-8 print-p-0">
+        <main class="max-w-4xl mx-auto bg-white shadow-lg rounded-2xl p-8 md:p-12 print-shadow-none print-p-0">
+            
+            <!-- Header -->
+            <header class="flex flex-col md:flex-row items-center md:items-start justify-between gap-6 pb-8 border-b border-slate-200">
+                <div class="flex flex-col md:flex-row items-center md:items-start gap-6">
+                    <div class="w-32 h-32 rounded-full overflow-hidden bg-slate-200 shadow-inner flex items-center justify-center border-4 border-white shrink-0">
+                        <!-- Placeholder для фото -->
+                        <img src="my-photo.jpg" alt="Бабаев Эрмек" class="w-full h-full object-cover">
+                    </div>
+                    <div class="text-center md:text-left">
+                        <h1 class="text-3xl md:text-4xl font-bold text-slate-900 tracking-tight mb-2">Бабаев Эрмек</h1>
+                        <p class="text-xl text-blue-600 font-medium mb-4">Стажер программист</p>
+                        
+                        <div class="flex flex-wrap justify-center md:justify-start gap-4 text-sm text-slate-600">
+                            <a href="tel:+79911729612" class="flex items-center gap-1.5 hover:text-blue-600 transition-colors">
+                                <i data-lucide="phone" class="w-4 h-4"></i>
+                                <span>+7 (991) 1729612</span>
+                            </a>
+                            <div class="flex items-center gap-1.5">
+                                <i data-lucide="map-pin" class="w-4 h-4"></i>
+                                <span>Москва, Россия</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="flex flex-col gap-3 text-sm text-slate-600 min-w-[200px]">
+                    <a href="mailto:babaeve63@gmail.com" class="flex items-center gap-2 p-2 rounded-lg hover:bg-slate-100 transition-colors">
+                        <i data-lucide="mail" class="w-4 h-4 text-slate-400"></i>
+                        <span>babaeve63@gmail.com</span>
+                    </a>
+                    <a href="https://github.com/ErMe4a?tab=repositories" target="_blank" rel="noopener noreferrer" class="flex items-center gap-2 p-2 rounded-lg hover:bg-slate-100 transition-colors">
+                        <i data-lucide="github" class="w-4 h-4 text-slate-400"></i>
+                        <span>GitHub Profile</span>
+                    </a>
+                </div>
+            </header>
+
+            <!-- About -->
+            <section class="py-8 border-b border-slate-100">
+                <h2 class="text-sm font-bold uppercase tracking-wider text-slate-400 mb-6">Обо мне</h2>
+                <p class="text-slate-700 leading-relaxed text-justify md:text-left">
+                    Я студент 3 курса факультета «Информационных технологий и анализа больших данных». Изучаю Backend разработку на Python. Начинал с курсов и понял, что мне интересна IT сфера в целом и поэтому решил развиваться в данной отрасли. Активно принимаю участия в создании различных университетских проектов. Данная сфера позволяет создавать приложения и системы, которые решают задачи бизнеса и удовлетворять потребности пользователя. Считаю, что мне многому еще стоит научиться и морально готов к потоку новой информации и горящим срокам, а также уверенно настроен принимать участие в разработке качественных продуктов.
+                </p>
+            </section>
+
+            <!-- Skills -->
+            <section class="py-8 border-b border-slate-100">
+                <h2 class="text-sm font-bold uppercase tracking-wider text-slate-400 mb-6">Навыки</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
+                    
+                    <div class="space-y-8">
+                        <!-- Languages -->
+                        <div>
+                            <h3 class="font-semibold text-slate-900 mb-3">Языки</h3>
+                            <ul class="space-y-2">
+                                <li class="flex justify-between items-center text-slate-700 border-b border-slate-100 pb-2">
+                                    <span>Русский</span>
+                                    <span class="text-slate-500 text-sm">Родной</span>
+                                </li>
+                                <li class="flex justify-between items-center text-slate-700 border-b border-slate-100 pb-2">
+                                    <span>Английский</span>
+                                    <span class="text-slate-500 text-sm">B1 — Средний</span>
+                                </li>
+                            </ul>
+                        </div>
+
+                        <!-- Tech Stack -->
+                        <div>
+                            <h3 class="font-semibold text-slate-900 mb-3">Технологии</h3>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="px-3 py-1 bg-slate-100 text-slate-700 rounded-full text-sm font-medium">Python</span>
+                                <span class="px-3 py-1 bg-slate-100 text-slate-700 rounded-full text-sm font-medium">PostgreSQL</span>
+                                <span class="px-3 py-1 bg-slate-100 text-slate-700 rounded-full text-sm font-medium">SQL</span>
+                                <span class="px-3 py-1 bg-slate-100 text-slate-700 rounded-full text-sm font-medium">Git</span>
+                                <span class="px-3 py-1 bg-slate-100 text-slate-700 rounded-full text-sm font-medium">Linux (Ubuntu)</span>
+                                <span class="px-3 py-1 bg-slate-100 text-slate-700 rounded-full text-sm font-medium">REST API</span>
+                                <span class="px-3 py-1 bg-slate-100 text-slate-700 rounded-full text-sm font-medium">FastAPI/Django</span>
+                                <span class="px-3 py-1 bg-slate-100 text-slate-700 rounded-full text-sm font-medium">Docker</span>
+                                <span class="px-3 py-1 bg-slate-100 text-slate-700 rounded-full text-sm font-medium">Confluence</span>
+                                <span class="px-3 py-1 bg-slate-100 text-slate-700 rounded-full text-sm font-medium">Postman</span>
+                                <span class="px-3 py-1 bg-slate-100 text-slate-700 rounded-full text-sm font-medium">UML</span>
+                                <span class="px-3 py-1 bg-slate-100 text-slate-700 rounded-full text-sm font-medium">BPMN</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="space-y-8">
+                        <!-- Hard Skills -->
+                        <div>
+                            <h3 class="font-semibold text-slate-900 mb-3">Hard Skills</h3>
+                            <ul class="space-y-2">
+                                <li class="flex gap-2 text-slate-700 text-sm leading-relaxed">
+                                    <i data-lucide="check-circle-2" class="w-4 h-4 text-blue-500 mt-0.5 shrink-0"></i>
+                                    <span>Уверенно владею языком программирования Python</span>
+                                </li>
+                                <li class="flex gap-2 text-slate-700 text-sm leading-relaxed">
+                                    <i data-lucide="check-circle-2" class="w-4 h-4 text-blue-500 mt-0.5 shrink-0"></i>
+                                    <span>Хорошо разбираюсь в ООП</span>
+                                </li>
+                                <li class="flex gap-2 text-slate-700 text-sm leading-relaxed">
+                                    <i data-lucide="check-circle-2" class="w-4 h-4 text-blue-500 mt-0.5 shrink-0"></i>
+                                    <span>Практические навыки работы с REST API, JSON, XML</span>
+                                </li>
+                                <li class="flex gap-2 text-slate-700 text-sm leading-relaxed">
+                                    <i data-lucide="check-circle-2" class="w-4 h-4 text-blue-500 mt-0.5 shrink-0"></i>
+                                    <span>Парсинг сайтов через API</span>
+                                </li>
+                                <li class="flex gap-2 text-slate-700 text-sm leading-relaxed">
+                                    <i data-lucide="check-circle-2" class="w-4 h-4 text-blue-500 mt-0.5 shrink-0"></i>
+                                    <span>Умею читать API в Swagger и OpenAPI</span>
+                                </li>
+                                <li class="flex gap-2 text-slate-700 text-sm leading-relaxed">
+                                    <i data-lucide="check-circle-2" class="w-4 h-4 text-blue-500 mt-0.5 shrink-0"></i>
+                                    <span>Умею работать с SQL запросами базовой сложности (Select, Join, Where, Group by, Order by)</span>
+                                </li>
+                                <li class="flex gap-2 text-slate-700 text-sm leading-relaxed">
+                                    <i data-lucide="check-circle-2" class="w-4 h-4 text-blue-500 mt-0.5 shrink-0"></i>
+                                    <span>Знаком с консолью Linux (работал с Ubuntu)</span>
+                                </li>
+                                <li class="flex gap-2 text-slate-700 text-sm leading-relaxed">
+                                    <i data-lucide="check-circle-2" class="w-4 h-4 text-blue-500 mt-0.5 shrink-0"></i>
+                                    <span>Знаком с GITом</span>
+                                </li>
+                                <li class="flex gap-2 text-slate-700 text-sm leading-relaxed">
+                                    <i data-lucide="check-circle-2" class="w-4 h-4 text-blue-500 mt-0.5 shrink-0"></i>
+                                    <span>Умею моделировать бизнес-процесс в методологиях: BPMN, EPC, IDEF0, UML</span>
+                                </li>
+                            </ul>
+                        </div>
+
+                        <!-- Soft Skills -->
+                        <div>
+                            <h3 class="font-semibold text-green-700 mb-3">Soft Skills</h3>
+                            <ul class="space-y-2">
+                                <li class="flex gap-2 text-slate-700 text-sm leading-relaxed">
+                                    <i data-lucide="check-circle-2" class="w-4 h-4 text-green-500 mt-0.5 shrink-0"></i>
+                                    <span>Искренний, открытый и спокойный парень с системным мышлением</span>
+                                </li>
+                                <li class="flex gap-2 text-slate-700 text-sm leading-relaxed">
+                                    <i data-lucide="check-circle-2" class="w-4 h-4 text-green-500 mt-0.5 shrink-0"></i>
+                                    <span>Внимателен к бизнес требованиям и срокам разработки</span>
+                                </li>
+                                <li class="flex gap-2 text-slate-700 text-sm leading-relaxed">
+                                    <i data-lucide="check-circle-2" class="w-4 h-4 text-green-500 mt-0.5 shrink-0"></i>
+                                    <span>Стремлюсь к изучению нового, не стесняюсь спросить совета у более опытного специалиста</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Education -->
+            <section class="py-8 border-b border-slate-100 last:border-0">
+                <h2 class="text-sm font-bold uppercase tracking-wider text-slate-400 mb-6">Образование</h2>
+                <div class="flex gap-4">
+                    <div class="mt-1">
+                        <div class="w-8 h-8 rounded-full bg-blue-50 flex items-center justify-center">
+                            <i data-lucide="graduation-cap" class="w-4 h-4 text-blue-600"></i>
+                        </div>
+                    </div>
+                    <div>
+                        <h3 class="text-lg font-semibold text-slate-900">Финансовый университет при Правительстве РФ</h3>
+                        <p class="text-slate-700 font-medium">Бакалавр, Бизнес-информатика (ИТ и анализ больших данных)</p>
+                        <p class="text-sm text-slate-500 mt-1">2023 — 2027</p>
+                    </div>
+                </div>
+            </section>
+            
+            <footer class="mt-12 pt-8 border-t border-slate-100 text-center text-slate-400 text-sm">
+                <p>© 2025 • Резюме обновлено</p>
+            </footer>
+        </main>
+    </div>
+
+    <!-- Инициализация иконок -->
+    <script>
+        lucide.createIcons();
+    </script>
+</body>
+</html>
