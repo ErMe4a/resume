@@ -1,226 +1,463 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="ru" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Бабаев Эрмек - Резюме</title>
+    <title>Бабаев Эрмек | Backend Developer</title>
     
-    <!-- Подключение Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        mono: ['JetBrains Mono', 'monospace'],
+                    },
+                    colors: {
+                        dev: {
+                            bg: '#0f172a',
+                            card: '#1e293b',
+                            accent: '#3b82f6',
+                            neon: '#22d3ee'
+                        }
+                    },
+                    animation: {
+                        'blob': 'blob 7s infinite',
+                        'cursor': 'cursor .75s step-end infinite',
+                        'fade-in': 'fadeIn 0.5s ease-out forwards',
+                        'slide-up': 'slideUp 0.5s ease-out forwards',
+                    },
+                    keyframes: {
+                        blob: {
+                            '0%': { transform: 'translate(0px, 0px) scale(1)' },
+                            '33%': { transform: 'translate(30px, -50px) scale(1.1)' },
+                            '66%': { transform: 'translate(-20px, 20px) scale(0.9)' },
+                            '100%': { transform: 'translate(0px, 0px) scale(1)' },
+                        },
+                        cursor: {
+                            '0%, 100%': { opacity: '1' },
+                            '50%': { opacity: '0' },
+                        },
+                        fadeIn: {
+                            '0%': { opacity: '0' },
+                            '100%': { opacity: '1' },
+                        },
+                        slideUp: {
+                            '0%': { transform: 'translateY(20px)', opacity: '0' },
+                            '100%': { transform: 'translateY(0)', opacity: '1' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
     
-    <!-- Подключение иконок Lucide -->
     <script src="https://unpkg.com/lucide@latest"></script>
     
-    <!-- Подключение шрифтов -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
     
     <style>
-        body {
-            font-family: 'Inter', sans-serif;
-            background-color: #f8fafc;
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: transparent; }
+        ::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 4px; }
+        .dark ::-webkit-scrollbar-thumb { background: #334155; }
+        
+        /* Glitch Effect on Hover */
+        .glitch-wrapper { position: relative; overflow: hidden; }
+        .glitch-wrapper::before, .glitch-wrapper::after {
+            content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0;
+            background: inherit; opacity: 0; z-index: 2; pointer-events: none;
         }
-        /* Стили для печати */
-        @media print {
-            body { background-color: white; }
-            .print-p-0 { padding: 0 !important; }
-            .print-shadow-none { box-shadow: none !important; }
-            .no-print { display: none !important; }
-            .page-break { page-break-before: always; }
+        .glitch-wrapper:hover::before {
+            animation: glitch-anim-1 0.3s infinite linear alternate-reverse;
+            opacity: 0.5; background: rgba(59, 130, 246, 0.2);
+            transform: translate(-2px, 0);
         }
+        .glitch-wrapper:hover::after {
+            animation: glitch-anim-2 0.3s infinite linear alternate-reverse;
+            opacity: 0.5; background: rgba(34, 211, 238, 0.2);
+            transform: translate(2px, 0);
+        }
+        @keyframes glitch-anim-1 { 0% { clip-path: inset(20% 0 80% 0); } 100% { clip-path: inset(60% 0 10% 0); } }
+        @keyframes glitch-anim-2 { 0% { clip-path: inset(10% 0 60% 0); } 100% { clip-path: inset(80% 0 5% 0); } }
+
+        /* Code Block Syntax Highlighting Sim */
+        .token-key { color: #e06c75; }
+        .token-string { color: #98c379; }
+        .token-number { color: #d19a66; }
+        .token-bool { color: #56b6c2; }
     </style>
-<script type="importmap">
-{
-  "imports": {
-    "react": "https://esm.sh/react@^19.2.1",
-    "lucide-react": "https://esm.sh/lucide-react@^0.560.0",
-    "react/": "https://esm.sh/react@^19.2.1/"
-  }
-}
-</script>
 </head>
-<body>
-    <div class="min-h-screen py-8 px-4 sm:px-6 lg:px-8 print-p-0">
-        <main class="max-w-4xl mx-auto bg-white shadow-lg rounded-2xl p-8 md:p-12 print-shadow-none print-p-0">
-            
-            <!-- Header -->
-            <header class="flex flex-col md:flex-row items-center md:items-start justify-between gap-6 pb-8 border-b border-slate-200">
-                <div class="flex flex-col md:flex-row items-center md:items-start gap-6">
-                    <div class="w-32 h-32 rounded-full overflow-hidden bg-slate-200 shadow-inner flex items-center justify-center border-4 border-white shrink-0">
-                        <!-- Placeholder для фото -->
-                        <img src="my-photo.jpg" alt="Бабаев Эрмек" class="w-full h-full object-cover">
-                    </div>
-                    <div class="text-center md:text-left">
-                        <h1 class="text-3xl md:text-4xl font-bold text-slate-900 tracking-tight mb-2">Бабаев Эрмек</h1>
-                        <p class="text-xl text-blue-600 font-medium mb-4">Стажер программист</p>
-                        
-                        <div class="flex flex-wrap justify-center md:justify-start gap-4 text-sm text-slate-600">
-                            <a href="tel:+79911729612" class="flex items-center gap-1.5 hover:text-blue-600 transition-colors">
-                                <i data-lucide="phone" class="w-4 h-4"></i>
-                                <span>+7 (991) 1729612</span>
-                            </a>
-                            <div class="flex items-center gap-1.5">
-                                <i data-lucide="map-pin" class="w-4 h-4"></i>
-                                <span>Москва, Россия</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+<body class="bg-slate-50 text-slate-800 transition-colors duration-300 dark:bg-dev-bg dark:text-slate-200 antialiased selection:bg-blue-500 selection:text-white">
 
-                <div class="flex flex-col gap-3 text-sm text-slate-600 min-w-[200px]">
-                    <a href="mailto:babaeve63@gmail.com" class="flex items-center gap-2 p-2 rounded-lg hover:bg-slate-100 transition-colors">
-                        <i data-lucide="mail" class="w-4 h-4 text-slate-400"></i>
-                        <span>babaeve63@gmail.com</span>
-                    </a>
-                    <a href="https://github.com/ErMe4a?tab=repositories" target="_blank" rel="noopener noreferrer" class="flex items-center gap-2 p-2 rounded-lg hover:bg-slate-100 transition-colors">
-                        <i data-lucide="github" class="w-4 h-4 text-slate-400"></i>
-                        <span>GitHub Profile</span>
-                    </a>
-                </div>
-            </header>
-
-            <!-- About -->
-            <section class="py-8 border-b border-slate-100">
-                <h2 class="text-sm font-bold uppercase tracking-wider text-slate-400 mb-6">Обо мне</h2>
-                <p class="text-slate-700 leading-relaxed text-justify md:text-left">
-                    Я студент 3 курса факультета «Информационных технологий и анализа больших данных». Изучаю Backend разработку на Python. Начинал с курсов и понял, что мне интересна IT сфера в целом и поэтому решил развиваться в данной отрасли. Активно принимаю участия в создании различных университетских проектов. Данная сфера позволяет создавать приложения и системы, которые решают задачи бизнеса и удовлетворять потребности пользователя. Считаю, что мне многому еще стоит научиться и морально готов к потоку новой информации и горящим срокам, а также уверенно настроен принимать участие в разработке качественных продуктов.
-                </p>
-            </section>
-
-            <!-- Skills -->
-            <section class="py-8 border-b border-slate-100">
-                <h2 class="text-sm font-bold uppercase tracking-wider text-slate-400 mb-6">Навыки</h2>
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
-                    
-                    <div class="space-y-8">
-                        <!-- Languages -->
-                        <div>
-                            <h3 class="font-semibold text-slate-900 mb-3">Языки</h3>
-                            <ul class="space-y-2">
-                                <li class="flex justify-between items-center text-slate-700 border-b border-slate-100 pb-2">
-                                    <span>Русский</span>
-                                    <span class="text-slate-500 text-sm">Родной</span>
-                                </li>
-                                <li class="flex justify-between items-center text-slate-700 border-b border-slate-100 pb-2">
-                                    <span>Английский</span>
-                                    <span class="text-slate-500 text-sm">B1 — Средний</span>
-                                </li>
-                            </ul>
-                        </div>
-
-                        <!-- Tech Stack -->
-                        <div>
-                            <h3 class="font-semibold text-slate-900 mb-3">Технологии</h3>
-                            <div class="flex flex-wrap gap-2">
-                                <span class="px-3 py-1 bg-slate-100 text-slate-700 rounded-full text-sm font-medium">Python</span>
-                                <span class="px-3 py-1 bg-slate-100 text-slate-700 rounded-full text-sm font-medium">PostgreSQL</span>
-                                <span class="px-3 py-1 bg-slate-100 text-slate-700 rounded-full text-sm font-medium">SQL</span>
-                                <span class="px-3 py-1 bg-slate-100 text-slate-700 rounded-full text-sm font-medium">Git</span>
-                                <span class="px-3 py-1 bg-slate-100 text-slate-700 rounded-full text-sm font-medium">Linux (Ubuntu)</span>
-                                <span class="px-3 py-1 bg-slate-100 text-slate-700 rounded-full text-sm font-medium">REST API</span>
-                                <span class="px-3 py-1 bg-slate-100 text-slate-700 rounded-full text-sm font-medium">FastAPI/Django</span>
-                                <span class="px-3 py-1 bg-slate-100 text-slate-700 rounded-full text-sm font-medium">Docker</span>
-                                <span class="px-3 py-1 bg-slate-100 text-slate-700 rounded-full text-sm font-medium">Confluence</span>
-                                <span class="px-3 py-1 bg-slate-100 text-slate-700 rounded-full text-sm font-medium">Postman</span>
-                                <span class="px-3 py-1 bg-slate-100 text-slate-700 rounded-full text-sm font-medium">UML</span>
-                                <span class="px-3 py-1 bg-slate-100 text-slate-700 rounded-full text-sm font-medium">BPMN</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="space-y-8">
-                        <!-- Hard Skills -->
-                        <div>
-                            <h3 class="font-semibold text-slate-900 mb-3">Hard Skills</h3>
-                            <ul class="space-y-2">
-                                <li class="flex gap-2 text-slate-700 text-sm leading-relaxed">
-                                    <i data-lucide="check-circle-2" class="w-4 h-4 text-blue-500 mt-0.5 shrink-0"></i>
-                                    <span>Уверенно владею языком программирования Python</span>
-                                </li>
-                                <li class="flex gap-2 text-slate-700 text-sm leading-relaxed">
-                                    <i data-lucide="check-circle-2" class="w-4 h-4 text-blue-500 mt-0.5 shrink-0"></i>
-                                    <span>Хорошо разбираюсь в ООП</span>
-                                </li>
-                                <li class="flex gap-2 text-slate-700 text-sm leading-relaxed">
-                                    <i data-lucide="check-circle-2" class="w-4 h-4 text-blue-500 mt-0.5 shrink-0"></i>
-                                    <span>Практические навыки работы с REST API, JSON, XML</span>
-                                </li>
-                                <li class="flex gap-2 text-slate-700 text-sm leading-relaxed">
-                                    <i data-lucide="check-circle-2" class="w-4 h-4 text-blue-500 mt-0.5 shrink-0"></i>
-                                    <span>Парсинг сайтов через API</span>
-                                </li>
-                                <li class="flex gap-2 text-slate-700 text-sm leading-relaxed">
-                                    <i data-lucide="check-circle-2" class="w-4 h-4 text-blue-500 mt-0.5 shrink-0"></i>
-                                    <span>Умею читать API в Swagger и OpenAPI</span>
-                                </li>
-                                <li class="flex gap-2 text-slate-700 text-sm leading-relaxed">
-                                    <i data-lucide="check-circle-2" class="w-4 h-4 text-blue-500 mt-0.5 shrink-0"></i>
-                                    <span>Умею работать с SQL запросами базовой сложности (Select, Join, Where, Group by, Order by)</span>
-                                </li>
-                                <li class="flex gap-2 text-slate-700 text-sm leading-relaxed">
-                                    <i data-lucide="check-circle-2" class="w-4 h-4 text-blue-500 mt-0.5 shrink-0"></i>
-                                    <span>Знаком с консолью Linux (работал с Ubuntu)</span>
-                                </li>
-                                <li class="flex gap-2 text-slate-700 text-sm leading-relaxed">
-                                    <i data-lucide="check-circle-2" class="w-4 h-4 text-blue-500 mt-0.5 shrink-0"></i>
-                                    <span>Знаком с GITом</span>
-                                </li>
-                                <li class="flex gap-2 text-slate-700 text-sm leading-relaxed">
-                                    <i data-lucide="check-circle-2" class="w-4 h-4 text-blue-500 mt-0.5 shrink-0"></i>
-                                    <span>Умею моделировать бизнес-процесс в методологиях: BPMN, EPC, IDEF0, UML</span>
-                                </li>
-                            </ul>
-                        </div>
-
-                        <!-- Soft Skills -->
-                        <div>
-                            <h3 class="font-semibold text-green-700 mb-3">Soft Skills</h3>
-                            <ul class="space-y-2">
-                                <li class="flex gap-2 text-slate-700 text-sm leading-relaxed">
-                                    <i data-lucide="check-circle-2" class="w-4 h-4 text-green-500 mt-0.5 shrink-0"></i>
-                                    <span>Искренний, открытый и спокойный парень с системным мышлением</span>
-                                </li>
-                                <li class="flex gap-2 text-slate-700 text-sm leading-relaxed">
-                                    <i data-lucide="check-circle-2" class="w-4 h-4 text-green-500 mt-0.5 shrink-0"></i>
-                                    <span>Внимателен к бизнес требованиям и срокам разработки</span>
-                                </li>
-                                <li class="flex gap-2 text-slate-700 text-sm leading-relaxed">
-                                    <i data-lucide="check-circle-2" class="w-4 h-4 text-green-500 mt-0.5 shrink-0"></i>
-                                    <span>Стремлюсь к изучению нового, не стесняюсь спросить совета у более опытного специалиста</span>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <!-- Education -->
-            <section class="py-8 border-b border-slate-100 last:border-0">
-                <h2 class="text-sm font-bold uppercase tracking-wider text-slate-400 mb-6">Образование</h2>
-                <div class="flex gap-4">
-                    <div class="mt-1">
-                        <div class="w-8 h-8 rounded-full bg-blue-50 flex items-center justify-center">
-                            <i data-lucide="graduation-cap" class="w-4 h-4 text-blue-600"></i>
-                        </div>
-                    </div>
-                    <div>
-                        <h3 class="text-lg font-semibold text-slate-900">Финансовый университет при Правительстве РФ</h3>
-                        <p class="text-slate-700 font-medium">Бакалавр, Бизнес-информатика (ИТ и анализ больших данных)</p>
-                        <p class="text-sm text-slate-500 mt-1">2023 — 2027</p>
-                    </div>
-                </div>
-            </section>
-            
-            <footer class="mt-12 pt-8 border-t border-slate-100 text-center text-slate-400 text-sm">
-                <p>© 2025 • Резюме обновлено</p>
-            </footer>
-        </main>
+    <div class="fixed inset-0 overflow-hidden pointer-events-none z-0">
+        <div class="absolute -top-[20%] -left-[10%] w-[50%] h-[50%] bg-blue-200/30 rounded-full mix-blend-multiply filter blur-3xl opacity-70 animate-blob dark:bg-blue-900/20"></div>
+        <div class="absolute -bottom-[20%] -right-[10%] w-[50%] h-[50%] bg-cyan-200/30 rounded-full mix-blend-multiply filter blur-3xl opacity-70 animate-blob animation-delay-2000 dark:bg-cyan-900/20"></div>
     </div>
 
-    <!-- Инициализация иконок -->
+    <nav class="fixed top-0 w-full z-50 backdrop-blur-lg border-b border-white/20 dark:border-slate-800/50 transition-all duration-300" id="navbar">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+                <div class="flex items-center gap-2 font-mono font-bold text-lg cursor-pointer group" onclick="window.scrollTo(0,0)">
+                    <span class="text-blue-600 dark:text-dev-neon group-hover:animate-pulse">&gt;</span>
+                    <span>babaev_ermek</span>
+                    <span class="w-2 h-4 bg-blue-600 dark:bg-dev-neon animate-cursor"></span>
+                </div>
+                <div class="flex items-center gap-4">
+                    <button id="themeToggle" class="p-2 rounded-lg hover:bg-slate-200 dark:hover:bg-slate-800 transition-colors" title="Toggle Theme">
+                        <i data-lucide="moon" class="w-5 h-5 block dark:hidden"></i>
+                        <i data-lucide="sun" class="w-5 h-5 hidden dark:block text-yellow-400"></i>
+                    </button>
+                    <a href="#contact" class="hidden sm:flex items-center gap-2 
+                        bg-blue-500/30 backdrop-blur-md border border-white/20 text-white 
+                        px-4 py-2 rounded-lg font-medium text-sm 
+                        hover:bg-blue-500/40 hover:scale-105 transition-all">
+                        <i data-lucide="mail" class="w-4 h-4"></i>
+                        <span>Написать мне</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <main class="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 pt-28 pb-12 space-y-24">
+        
+        <section class="flex flex-col-reverse md:flex-row items-center justify-between gap-12">
+            <div class="flex-1 space-y-6 text-center md:text-left animate-fade-in">
+                <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-400 text-xs font-mono font-medium border border-green-200 dark:border-green-800">
+                    <span class="relative flex h-2 w-2">
+                      <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
+                      <span class="relative inline-flex rounded-full h-2 w-2 bg-green-500"></span>
+                    </span>
+                    System Status: OPEN TO WORK
+                </div>
+                
+                <h1 class="text-4xl md:text-6xl font-bold tracking-tight">
+                    Привет, я <span class="text-blue-600 dark:text-dev-neon">Эрмек</span>.
+                </h1>
+                
+                <div class="h-8 md:h-10 text-xl md:text-2xl text-slate-500 dark:text-slate-400 font-mono">
+                    I build <span id="typing-text" class="text-slate-800 dark:text-slate-200 border-b-2 border-blue-500"></span>
+                </div>
+                
+                <p class="text-slate-600 dark:text-slate-300 max-w-lg mx-auto md:mx-0 leading-relaxed">
+                    Студент, энтузиаст и будущий Senior Backend Developer. Создаю надежные API, обожаю Python и не боюсь сложных SQL-запросов.
+                </p>
+
+                <div class="flex flex-wrap justify-center md:justify-start gap-4 pt-4">
+                    <a href="https://github.com/ErMe4a?tab=repositories" target="_blank" class="flex items-center gap-2 px-6 py-3 bg-slate-200 dark:bg-slate-800 rounded-lg font-medium hover:bg-slate-300 dark:hover:bg-slate-700 transition-colors">
+                        <i data-lucide="github" class="w-5 h-5"></i>
+                        GitHub
+                    </a>
+                    <button onclick="document.getElementById('stack').scrollIntoView()" class="flex items-center gap-2 px-6 py-3 border border-slate-300 dark:border-slate-700 rounded-lg font-medium hover:border-blue-500 dark:hover:border-dev-neon transition-colors">
+                        <i data-lucide="code-2" class="w-5 h-5"></i>
+                        Стек
+                    </button>
+                </div>
+            </div>
+
+            <div class="relative w-64 h-64 md:w-80 md:h-80 shrink-0 animate-slide-up">
+                <div class="absolute inset-0 bg-gradient-to-tr from-blue-500 to-cyan-400 rounded-2xl rotate-6 opacity-20 dark:opacity-40 blur-lg"></div>
+                <div class="glitch-wrapper w-full h-full rounded-2xl overflow-hidden bg-slate-200 dark:bg-slate-700 border-4 border-white dark:border-slate-800 shadow-2xl relative z-10">
+                    <img src="345.jpg" alt="Бабаев Эрмек Профиль" class="w-full h-full object-cover">
+                </div>
+                <div class="absolute -right-6 top-10 bg-white dark:bg-slate-800 p-3 rounded-lg shadow-lg border border-slate-100 dark:border-slate-700 animate-bounce" style="animation-duration: 3s;">
+                    <i data-lucide="database" class="w-6 h-6 text-blue-500"></i>
+                </div>
+                <div class="absolute -left-6 bottom-10 bg-white dark:bg-slate-800 p-3 rounded-lg shadow-lg border border-slate-100 dark:border-slate-700 animate-bounce" style="animation-duration: 4s;">
+                    <i data-lucide="server" class="w-6 h-6 text-purple-500"></i>
+                </div>
+            </div>
+        </section>
+
+        <section class="grid grid-cols-2 md:grid-cols-4 gap-4">
+            <div class="bg-white dark:bg-dev-card p-6 rounded-2xl border border-slate-200 dark:border-slate-700 text-center hover:-translate-y-1 transition-transform cursor-default">
+                <div class="text-3xl font-bold text-blue-600 dark:text-dev-neon mb-1">3</div>
+                <div class="text-xs uppercase tracking-wider text-slate-500 font-semibold">Курс</div>
+            </div>
+            <div class="bg-white dark:bg-dev-card p-6 rounded-2xl border border-slate-200 dark:border-slate-700 text-center hover:-translate-y-1 transition-transform cursor-default">
+                <div class="text-3xl font-bold text-purple-600 dark:text-purple-400 mb-1">∞</div>
+                <div class="text-xs uppercase tracking-wider text-slate-500 font-semibold">Мотивация</div>
+            </div>
+            <div class="bg-white dark:bg-dev-card p-6 rounded-2xl border border-slate-200 dark:border-slate-700 text-center hover:-translate-y-1 transition-transform cursor-default">
+                <div class="text-3xl font-bold text-green-600 dark:text-green-400 mb-1">B1</div>
+                <div class="text-xs uppercase tracking-wider text-slate-500 font-semibold">English</div>
+            </div>
+            <div class="bg-white dark:bg-dev-card p-6 rounded-2xl border border-slate-200 dark:border-slate-700 text-center hover:-translate-y-1 transition-transform cursor-default">
+                <div class="text-3xl mb-1">
+                    <i data-lucide="map-pin" class="w-8 h-8 text-orange-600 dark:text-orange-400 mx-auto block"></i>
+                </div>
+                <div class="text-xs uppercase tracking-wider text-slate-500 font-semibold">Москва</div>
+            </div>
+        </section>
+
+        <section id="stack" class="scroll-mt-24">
+            <div class="flex items-center gap-4 mb-8">
+                <h2 class="text-2xl font-bold dark:text-white">Технический арсенал</h2>
+                <div class="h-px bg-slate-200 dark:bg-slate-700 flex-1"></div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div class="space-y-6">
+                    <h3 class="font-mono text-sm text-blue-600 dark:text-dev-neon mb-4">CORE STACK</h3>
+                    <div class="grid grid-cols-2 sm:grid-cols-3 gap-3">
+                        <div class="group p-4 bg-white dark:bg-slate-800 rounded-xl border border-slate-100 dark:border-slate-700 hover:border-blue-500 dark:hover:border-dev-neon transition-all hover:shadow-lg hover:shadow-blue-500/10 flex flex-col items-center gap-2">
+                            <i data-lucide="file-code-2" class="text-slate-400 group-hover:text-blue-500 transition-colors"></i>
+                            <span class="font-medium">Python</span>
+                        </div>
+                        <div class="group p-4 bg-white dark:bg-slate-800 rounded-xl border border-slate-100 dark:border-slate-700 hover:border-blue-500 dark:hover:border-dev-neon transition-all hover:shadow-lg hover:shadow-blue-500/10 flex flex-col items-center gap-2">
+                            <i data-lucide="database" class="text-slate-400 group-hover:text-blue-500 transition-colors"></i>
+                            <span class="font-medium">PostgreSQL</span>
+                        </div>
+                        <div class="group p-4 bg-white dark:bg-slate-800 rounded-xl border border-slate-100 dark:border-slate-700 hover:border-blue-500 dark:hover:border-dev-neon transition-all hover:shadow-lg hover:shadow-blue-500/10 flex flex-col items-center gap-2">  
+                            <div class="text-2xl font-black text-slate-400 group-hover:text-green-600 transition-colors pt-1">
+                                dj
+                            </div>
+                            <span class="font-medium">Django</span>
+                        </div>
+                        <div class="group p-4 bg-white dark:bg-slate-800 rounded-xl border border-slate-100 dark:border-slate-700 hover:border-blue-500 dark:hover:border-dev-neon transition-all hover:shadow-lg hover:shadow-blue-500/10 flex flex-col items-center gap-2">
+                            <i data-lucide="container" class="text-slate-400 group-hover:text-blue-500 transition-colors"></i>
+                            <span class="font-medium">Docker</span>
+                        </div>
+                        <div class="group p-4 bg-white dark:bg-slate-800 rounded-xl border border-slate-100 dark:border-slate-700 hover:border-blue-500 dark:hover:border-dev-neon transition-all hover:shadow-lg hover:shadow-blue-500/10 flex flex-col items-center gap-2">
+                            <i data-lucide="git-branch" class="text-slate-400 group-hover:text-blue-500 transition-colors"></i>
+                            <span class="font-medium">Git</span>
+                        </div>
+                        <div class="group p-4 bg-white dark:bg-slate-800 rounded-xl border border-slate-100 dark:border-slate-700 hover:border-blue-500 dark:hover:border-dev-neon transition-all hover:shadow-lg hover:shadow-blue-500/10 flex flex-col items-center gap-2">
+                            <i data-lucide="terminal" class="text-slate-400 group-hover:text-blue-500 transition-colors"></i>
+                            <span class="font-medium">Linux</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-slate-900 rounded-xl p-6 font-mono text-sm overflow-hidden relative group">
+                    <div class="absolute top-0 right-0 p-2 opacity-50 group-hover:opacity-100 transition-opacity">
+                        <div class="flex gap-1.5">
+                            <div class="w-3 h-3 rounded-full bg-red-500"></div>
+                            <div class="w-3 h-3 rounded-full bg-yellow-500"></div>
+                            <div class="w-3 h-3 rounded-full bg-green-500"></div>
+                        </div>
+                    </div>
+                    <div class="text-slate-400 mb-2"># skills.py</div>
+                    <div class="space-y-1">
+                        <div><span class="text-purple-400">class</span> <span class="text-yellow-400">Developer</span>:</div>
+                        <div class="pl-4"><span class="text-blue-400">def</span> <span class="text-yellow-400">__init__</span>(self):</div>
+                        <div class="pl-8 text-slate-300">self.hard_skills = [</div>
+                        <div class="pl-12 text-green-400">"REST API", "JSON/XML",</div>
+                        <div class="pl-12 text-green-400">"Swagger/OpenAPI",</div>
+                        <div class="pl-12 text-green-400">"SQL (Joins, Groups)",</div>
+                        <div class="pl-12 text-green-400">"UML/BPMN"</div>
+                        <div class="pl-8 text-slate-300">]</div>
+                        <div class="pl-8 text-slate-300">self.soft_skills = [</div>
+                        <div class="pl-12 text-green-400">"System thinking",</div>
+                        <div class="pl-12 text-green-400">"Attention to detail",</div>
+                        <div class="pl-12 text-green-400">"Fast learner"</div>
+                        <div class="pl-8 text-slate-300">]</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <div class="flex items-center gap-4 mb-8">
+                <h2 class="text-2xl font-bold dark:text-white">Путь</h2>
+                <div class="h-px bg-slate-200 dark:bg-slate-700 flex-1"></div>
+            </div>
+
+            <div class="relative pl-8 border-l-2 border-slate-200 dark:border-slate-700 space-y-10">
+                <div class="relative group">
+                    <div class="absolute -left-[41px] p-2 bg-slate-50 dark:bg-dev-bg border-2 border-blue-500 rounded-full group-hover:scale-110 transition-transform">
+                        <i data-lucide="graduation-cap" class="w-5 h-5 text-blue-600 dark:text-blue-400"></i>
+                    </div>
+                    <div>
+                        <span class="inline-block px-3 py-1 rounded bg-slate-100 dark:bg-slate-800 text-sm font-medium text-slate-600 dark:text-slate-400 mb-2">2023 — 2027</span>
+                        <h3 class="text-xl font-bold text-slate-900 dark:text-white">Финансовый университет</h3>
+                        <p class="text-blue-600 dark:text-dev-neon font-medium">Бакалавр, Бизнес-информатика</p>
+                        <p class="text-slate-600 dark:text-slate-400 mt-2 text-sm leading-relaxed">
+                            Факультет «Информационных технологий и анализа больших данных». Активное участие в создании университетских проектов.
+                        </p>
+                    </div>
+                </div>
+                
+                <div class="relative group">
+                    <div class="absolute -left-[41px] p-2 bg-slate-50 dark:bg-dev-bg border-2 border-slate-300 dark:border-slate-600 rounded-full group-hover:border-blue-500 transition-colors">
+                        <i data-lucide="code" class="w-5 h-5 text-slate-500 dark:text-slate-400"></i>
+                    </div>
+                    <div>
+                        <span class="inline-block px-3 py-1 rounded bg-slate-100 dark:bg-slate-800 text-sm font-medium text-slate-600 dark:text-slate-400 mb-2">Настоящее время</span>
+                        <h3 class="text-xl font-bold text-slate-900 dark:text-white">Self-Development</h3>
+                        <p class="text-blue-600 dark:text-dev-neon font-medium">Python Backend Journey</p>
+                        <p class="text-slate-600 dark:text-slate-400 mt-2 text-sm leading-relaxed">
+                            Глубокое изучение архитектуры, алгоритмов, баз данных и современных фреймворков.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact" class="mb-20 scroll-mt-24">
+            <div class="bg-gradient-to-br from-blue-600 to-indigo-700 dark:from-slate-800 dark:to-black rounded-3xl p-8 md:p-12 shadow-2xl relative overflow-hidden text-white">
+                <div class="absolute top-0 right-0 p-32 bg-white opacity-5 rounded-full blur-3xl transform translate-x-1/2 -translate-y-1/2"></div>
+                
+                <div class="flex flex-col md:flex-row justify-between gap-8 relative z-10">
+                    <div class="space-y-6 max-w-lg">
+                        <h2 class="text-3xl font-bold">Давайте создадим что-то крутое!</h2>
+                        <p class="text-blue-100 dark:text-slate-400">
+                            Я открыт для стажировок и Junior позиций. Готов выполнить тестовое задание.
+                        </p>
+                        
+                        <div class="flex flex-wrap gap-4">
+                            <a href="mailto:babaeve63@gmail.com" class="flex items-center justify-center gap-2 bg-blue-500/30 backdrop-blur-md border border-white/20 px-6 py-3 rounded-xl font-bold hover:bg-blue-500/40 transition-colors">
+                                <i data-lucide="mail"></i>
+                                babaeve63@gmail.com
+                            </a>
+                            <a href="https://t.me/ermekbabaev" target="_blank" class="flex items-center justify-center gap-2 bg-blue-500/30 backdrop-blur-md border border-white/20 px-6 py-3 rounded-xl font-bold hover:bg-blue-500/40 transition-colors">
+                                <i data-lucide="send"></i>
+                                @ermekbabaev
+                            </a>
+                            <a href="tel:+79911729612" class="flex items-center justify-center gap-2 bg-blue-500/30 backdrop-blur-md border border-white/20 px-6 py-3 rounded-xl font-bold hover:bg-blue-500/40 transition-colors">
+                                <i data-lucide="phone"></i>
+                                +7 (991) 1729612
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="w-full md:w-96 bg-black/30 backdrop-blur-md rounded-xl border border-white/10 p-1">
+                        <div class="flex items-center justify-between px-4 py-2 bg-black/20 rounded-t-lg">
+                            <div class="flex gap-1.5">
+                                <div class="w-3 h-3 rounded-full bg-red-500"></div>
+                                <div class="w-3 h-3 rounded-full bg-yellow-500"></div>
+                            </div>
+                            <div class="flex bg-black/40 rounded p-0.5 text-xs font-mono">
+                                <button onclick="toggleCodeMode(false)" id="btn-ui" class="px-2 py-0.5 rounded bg-blue-600 text-white transition-all">UI</button>
+                                <button onclick="toggleCodeMode(true)" id="btn-json" class="px-2 py-0.5 rounded hover:bg-white/10 transition-all text-slate-300">JSON</button>
+                            </div>
+                        </div>
+                        
+                        <div id="contact-ui" class="p-6 space-y-4">
+                            <div class="flex items-center gap-3">
+                                <div class="w-10 h-10 rounded-full bg-blue-500/20 flex items-center justify-center">
+                                    <i data-lucide="map-pin" class="w-5 h-5 text-blue-200"></i>
+                                </div>
+                                <div>
+                                    <div class="text-xs text-blue-200 uppercase">Локация</div>
+                                    <div class="font-medium">Москва, Россия</div>
+                                </div>
+                            </div>
+                            <div class="flex items-center gap-3">
+                                <div class="w-10 h-10 rounded-full bg-blue-500/20 flex items-center justify-center">
+                                    <i data-lucide="github" class="w-5 h-5 text-blue-200"></i>
+                                </div>
+                                <div>
+                                    <div class="text-xs text-blue-200 uppercase">GitHub</div>
+                                    <a href="https://github.com/ErMe4a" target="_blank" class="font-medium hover:underline">github.com/ErMe4a</a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div id="contact-json" class="p-6 font-mono text-xs hidden overflow-x-auto">
+<pre class="whitespace-pre"><span class="token-key">"contact"</span>: {
+  <span class="token-key">"phone"</span>: <span class="token-string">"+7 (991) 1729612"</span>,
+  <span class="token-key">"email"</span>: <span class="token-string">"babaeve63@gmail.com"</span>,
+  <span class="token-key">"telegram"</span>: <span class="token-string">"@ermekbabaev"</span>,
+  <span class="token-key">"location"</span>: <span class="token-string">"Moscow, RU"</span>,
+  <span class="token-key">"open_for_work"</span>: <span class="token-bool">true</span>
+}</pre>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <footer class="text-center text-slate-400 text-sm font-mono border-t border-slate-200 dark:border-slate-800 pt-8">
+            <p>Built with &lt;3 by Ermek using HTML, Tailwind & Coffee.</p>
+        </footer>
+    </main>
+
     <script>
+        // Init Icons
         lucide.createIcons();
+
+        // --- Typing Effect ---
+        const textToType = ["Backend Systems.", "Clean APIs.", "Python Logic.", "Data Solutions."];
+        const typeEl = document.getElementById('typing-text');
+        let txtIndex = 0;
+        let charIndex = 0;
+        let isDeleting = false;
+        let typeSpeed = 100;
+
+        function typeWriter() {
+            const current = textToType[txtIndex % textToType.length];
+            
+            if (isDeleting) {
+                typeEl.textContent = current.substring(0, charIndex - 1);
+                charIndex--;
+                typeSpeed = 50;
+            } else {
+                typeEl.textContent = current.substring(0, charIndex + 1);
+                charIndex++;
+                typeSpeed = 100;
+            }
+
+            if (!isDeleting && charIndex === current.length) {
+                isDeleting = true;
+                typeSpeed = 2000; // Pause at end
+            } else if (isDeleting && charIndex === 0) {
+                isDeleting = false;
+                txtIndex++;
+                typeSpeed = 500;
+            }
+
+            setTimeout(typeWriter, typeSpeed);
+        }
+
+        document.addEventListener('DOMContentLoaded', typeWriter);
+
+        // --- Theme Toggle ---
+        const themeToggleBtn = document.getElementById('themeToggle');
+        const html = document.documentElement;
+        
+        // Check system preference
+        if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+            html.classList.add('dark');
+        }
+
+        themeToggleBtn.addEventListener('click', () => {
+            html.classList.toggle('dark');
+        });
+
+        // --- Contact Card Toggle ---
+        function toggleCodeMode(isCode) {
+            const ui = document.getElementById('contact-ui');
+            const json = document.getElementById('contact-json');
+            const btnUi = document.getElementById('btn-ui');
+            const btnJson = document.getElementById('btn-json');
+
+            if (isCode) {
+                ui.classList.add('hidden');
+                json.classList.remove('hidden');
+                
+                btnJson.classList.add('bg-blue-600', 'text-white');
+                btnJson.classList.remove('text-slate-300', 'hover:bg-white/10');
+                
+                btnUi.classList.remove('bg-blue-600', 'text-white');
+                btnUi.classList.add('text-slate-300', 'hover:bg-white/10');
+            } else {
+                json.classList.add('hidden');
+                ui.classList.remove('hidden');
+                
+                btnUi.classList.add('bg-blue-600', 'text-white');
+                btnUi.classList.remove('text-slate-300', 'hover:bg-white/10');
+                
+                btnJson.classList.remove('bg-blue-600', 'text-white');
+                btnJson.classList.add('text-slate-300', 'hover:bg-white/10');
+            }
+        }
     </script>
 </body>
 </html>
